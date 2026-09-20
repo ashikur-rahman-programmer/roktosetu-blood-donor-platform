@@ -1,10 +1,10 @@
 {
-  "version": 2,
-  "outputDirectory": "dist",
   "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "dist/api.js"
-    }
-  ]
+    { "source": "/health", "destination": "/api/index" },
+    { "source": "/api/auth/:path*", "destination": "/api/index" },
+    { "source": "/api/users/:path*", "destination": "/api/index" },
+    { "source": "/api/emergency/:path*", "destination": "/api/index" },
+    { "source": "/api/admin/:path*", "destination": "/api/index" }
+  ],
+  "crons": [{ "path": "/api/cron/availability", "schedule": "5 0 * * *" }]
 }
