@@ -1,14 +1,8 @@
 {
   "framework": null,
-  "buildCommand": null,
+  "buildCommand": "npm run build",
   "installCommand": "npm install",
   "outputDirectory": null,
-  "rewrites": [
-    { "source": "/health", "destination": "/api/index" },
-    { "source": "/api/auth/:path*", "destination": "/api/index" },
-    { "source": "/api/users/:path*", "destination": "/api/index" },
-    { "source": "/api/emergency/:path*", "destination": "/api/index" },
-    { "source": "/api/admin/:path*", "destination": "/api/index" }
-  ],
+  "rewrites": [{ "source": "/(.*)", "destination": "/api/index" }],
   "crons": [{ "path": "/api/cron/availability", "schedule": "5 0 * * *" }]
 }
