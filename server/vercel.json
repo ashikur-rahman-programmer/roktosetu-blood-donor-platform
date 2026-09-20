@@ -1,4 +1,8 @@
 {
+  "framework": null,
+  "buildCommand": null,
+  "installCommand": "npm install",
+  "outputDirectory": null,
   "rewrites": [
     { "source": "/health", "destination": "/api/index" },
     { "source": "/api/auth/:path*", "destination": "/api/index" },
