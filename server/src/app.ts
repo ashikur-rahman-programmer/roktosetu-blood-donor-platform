@@ -26,10 +26,14 @@ export function createApp(db: Db) {
     cors({
       origin: env.CORS_ORIGINS,
       credentials: true,
-    })
+    }),
   );
   app.use(helmet());
   app.use(morgan(env.NODE_ENV === "production" ? "combined" : "dev"));
+
+  app.get("/", (_req, res) => {
+    res.json({ message: "RoktoSetu Server API is running..." });
+  });
 
   app.get("/health", (_req, res) => res.json({ ok: true, env: env.NODE_ENV }));
 
