@@ -10,7 +10,9 @@ async function main() {
   startAvailabilityCron();
 
   app.listen(env.PORT, () => {
-    console.log(`[server] RoktoSetu API running on port ${env.PORT} (${env.NODE_ENV})`);
+    console.log(
+      `[server] RoktoSetu API running on port ${env.PORT} (${env.NODE_ENV})`,
+    );
   });
 }
 
