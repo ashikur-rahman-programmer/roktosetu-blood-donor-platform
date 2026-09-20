@@ -1,6 +1,15 @@
 {
-  "framework": null,
   "installCommand": "npm install",
-  "rewrites": [{ "source": "/(.*)", "destination": "/api/index" }],
-  "crons": [{ "path": "/api/cron/availability", "schedule": "5 0 * * *" }]
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/api/index"
+    }
+  ],
+  "crons": [
+    {
+      "path": "/api/cron/availability",
+      "schedule": "5 0 * * *"
+    }
+  ]
 }
