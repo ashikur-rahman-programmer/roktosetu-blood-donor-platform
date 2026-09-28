@@ -16,6 +16,7 @@ npm test                    # vitest — date/eligibility লজিক ও Zod s
 ```
 
 ## মডিউল স্ট্রাকচার
+
 ```
 src/
   config/          -> env.ts, db.ts (MongoDB native + Mongoose কানেকশন)
@@ -38,23 +39,23 @@ vercel.json                -> rewrites + cron schedule কনফিগারে�
 
 ## API সংক্ষেপে
 
-| Method | Path | Auth | কাজ |
-|---|---|---|---|
-| POST | /api/auth/sign-up/email | — | রেজিস্ট্রেশন |
-| POST | /api/auth/sign-in/email | — | লগইন |
-| POST | /api/auth/sign-out | ✔ | লগআউট |
-| GET | /api/users/search | ✔ | ডোনার সার্চ (ফোন নম্বরসহ — লগইন লাগবে) |
-| GET | /api/users/me | ✔ | নিজের প্রোফাইল |
-| PATCH | /api/users/me | ✔ | প্রোফাইল আপডেট |
-| POST | /api/users/me/donate | ✔ | "আজ রক্ত দিয়েছি" |
-| PATCH | /api/users/me/availability | ✔ | উপলব্ধতা টগল |
-| GET | /api/users/me/history | ✔ | রক্তদানের ইতিহাস |
-| GET | /api/emergency | — | জরুরি অনুরোধের তালিকা |
-| POST | /api/emergency | ✔ | নতুন জরুরি অনুরোধ |
-| PATCH | /api/emergency/:id/fulfilled | ✔ | নিজের অনুরোধ বন্ধ করা |
-| GET | /api/admin/donors/unverified | ✔ (admin) | অভেরিফায়েড ডোনার তালিকা |
-| PATCH | /api/admin/donors/:id/verify | ✔ (admin) | ভেরিফাই করা |
-| DELETE | /api/admin/donors/:id | ✔ (admin) | ডোনার রিমুভ করা |
+| Method | Path                         | Auth      | কাজ                                    |
+| ------ | ---------------------------- | --------- | -------------------------------------- |
+| POST   | /api/auth/sign-up/email      | —         | রেজিস্ট্রেশন                           |
+| POST   | /api/auth/sign-in/email      | —         | লগইন                                   |
+| POST   | /api/auth/sign-out           | ✔         | লগআউট                                  |
+| GET    | /api/users/search            | ✔         | ডোনার সার্চ (ফোন নম্বরসহ — লগইন লাগবে) |
+| GET    | /api/users/me                | ✔         | নিজের প্রোফাইল                         |
+| PATCH  | /api/users/me                | ✔         | প্রোফাইল আপডেট                         |
+| POST   | /api/users/me/donate         | ✔         | "আজ রক্ত দিয়েছি"                      |
+| PATCH  | /api/users/me/availability   | ✔         | উপলব্ধতা টগল                           |
+| GET    | /api/users/me/history        | ✔         | রক্তদানের ইতিহাস                       |
+| GET    | /api/emergency               | —         | জরুরি অনুরোধের তালিকা                  |
+| POST   | /api/emergency               | ✔         | নতুন জরুরি অনুরোধ                      |
+| PATCH  | /api/emergency/:id/fulfilled | ✔         | নিজের অনুরোধ বন্ধ করা                  |
+| GET    | /api/admin/donors/unverified | ✔ (admin) | অভেরিফায়েড ডোনার তালিকা               |
+| PATCH  | /api/admin/donors/:id/verify | ✔ (admin) | ভেরিফাই করা                            |
+| DELETE | /api/admin/donors/:id        | ✔ (admin) |
 
 > **নোট:** `/api/users/search` ইচ্ছাকৃতভাবে ডোনারের ফোন নম্বর সরাসরি
 > রিটার্ন করে (approval flow নেই) — ডোনার অফলাইনে থাকলেও যেন খুঁজে পাওয়া
