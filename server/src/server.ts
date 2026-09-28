@@ -1,7 +1,7 @@
-import { connectAll } from "./config/db";
-import { createApp } from "./app";
-import { startAvailabilityCron } from "./jobs/availability.cron";
-import { env } from "./config/env";
+import { connectAll } from "./config/db.js";
+import { createApp } from "./app.js";
+import { startAvailabilityCron } from "./jobs/availability.cron.js";
+import { env } from "./config/env.js";
 
 async function main() {
   const db = await connectAll();
@@ -10,9 +10,7 @@ async function main() {
   startAvailabilityCron();
 
   app.listen(env.PORT, () => {
-    console.log(
-      `[server] RoktoSetu API running on port ${env.PORT} (${env.NODE_ENV})`,
-    );
+    console.log(`[server] RoktoSetu API running on port ${env.PORT} (${env.NODE_ENV})`);
   });
 }
 

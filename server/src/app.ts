@@ -1,20 +1,17 @@
-import dns from "node:dns/promises";
-dns.setServers(["1.1.1.1", "8.8.8.8"]);
-
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
 import type { Db } from "mongodb";
-import { env } from "./config/env";
-import { createAuth, type Auth } from "./modules/auth/auth.config";
-import { authRouter } from "./modules/auth/auth.routes";
-import { userRouter } from "./modules/user/user.routes";
-import { emergencyRouter } from "./modules/emergency/emergency.routes";
-import { adminRouter } from "./modules/admin/admin.routes";
-import { attachSession } from "./middlewares/auth.middleware";
-import { apiLimiter } from "./middlewares/rateLimit.middleware";
-import { notFoundHandler, errorHandler } from "./middlewares/error.middleware";
+import { env } from "./config/env.js";
+import { createAuth, type Auth } from "./modules/auth/auth.config.js";
+import { authRouter } from "./modules/auth/auth.routes.js";
+import { userRouter } from "./modules/user/user.routes.js";
+import { emergencyRouter } from "./modules/emergency/emergency.routes.js";
+import { adminRouter } from "./modules/admin/admin.routes.js";
+import { attachSession } from "./middlewares/auth.middleware.js";
+import { apiLimiter } from "./middlewares/rateLimit.middleware.js";
+import { notFoundHandler, errorHandler } from "./middlewares/error.middleware.js";
 
 export function createApp(db: Db) {
   const auth: Auth = createAuth(db);
@@ -26,14 +23,10 @@ export function createApp(db: Db) {
     cors({
       origin: env.CORS_ORIGINS,
       credentials: true,
-    }),
+    })
   );
   app.use(helmet());
   app.use(morgan(env.NODE_ENV === "production" ? "combined" : "dev"));
-
-  app.get("/", (_req, res) => {
-    res.json({ message: "RoktoSetu Server API is running..." });
-  });
 
   app.get("/health", (_req, res) => res.json({ ok: true, env: env.NODE_ENV }));
 

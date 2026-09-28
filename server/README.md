@@ -30,6 +30,10 @@ src/
   lib/notify.ts         -> sendEmail/sendSms স্টাব (console.log — real provider ছাড়া কিছু ডেলিভার হয় না)
   __tests__/              -> vitest ইউনিট টেস্ট
   app.ts, server.ts
+api/                       -> শুধু Vercel deploy করলে লাগে (Render/Railway-তে অপ্রয়োজনীয়)
+  index.ts                  -> পুরো Express অ্যাপকে একটা serverless function হিসেবে wrap করে
+  cron/availability.ts       -> Vercel Cron Jobs দিয়ে ট্রিগার হওয়া দৈনিক reset endpoint
+vercel.json                -> rewrites + cron schedule কনফিগারেশন (শুধু Vercel deploy-এ লাগে)
 ```
 
 ## API সংক্ষেপে

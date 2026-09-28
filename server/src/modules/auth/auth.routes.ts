@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { toNodeHandler } from "better-auth/node";
-import type { Auth } from "./auth.config";
+import type { Auth } from "./auth.config.js";
 
 /**
  * Mounts Better Auth's handler, which serves all of:

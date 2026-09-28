@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, afterEach } from "vitest";
-import { daysSince, isEligible } from "../utils/dateHelper";
+import { daysSince, isEligible } from "../utils/dateHelper.js";
 
 describe("dateHelper", () => {
   afterEach(() => {

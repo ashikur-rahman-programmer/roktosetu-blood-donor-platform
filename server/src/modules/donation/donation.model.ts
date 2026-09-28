@@ -1,4 +1,8 @@
-import { Schema, model, models, type InferSchemaType } from "mongoose";
+import mongoose, { type InferSchemaType } from "mongoose";
+
+// mongoose is CommonJS: Node's native ESM loader only allows the default
+// import from it, so named exports are destructured from that default.
+const { Schema, model, models } = mongoose;
 
 const donationHistorySchema = new Schema(
   {

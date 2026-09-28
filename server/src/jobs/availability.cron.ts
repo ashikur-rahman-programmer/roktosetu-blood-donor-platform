@@ -1,31 +1,32 @@
 import cron from "node-cron";
-import { getNativeDb } from "../config/db";
-import { env } from "../config/env";
+import type { Db } from "mongodb";
+import { getNativeDb } from "../config/db.js";
+import { env } from "../config/env.js";
 
 /**
- * Runs once a day. Any donor who is currently marked unavailable
- * (because they donated recently) and whose DONATION_GAP_DAYS has now
- * elapsed gets flipped back to isAvailable = true automatically — no
- * manual action needed from the donor.
+ * Flips every donor whose DONATION_GAP_DAYS has elapsed back to
+ * isAvailable = true. Shared by:
+ *  - startAvailabilityCron() below (long-running hosts like Render/Railway)
+ *  - api/cron/availability-reset.ts (Vercel Cron, since serverless
+ *    functions can't keep a node-cron timer alive between requests)
  */
+export async function runAvailabilityReset(db: Db = getNativeDb()) {
+  const cutoff = new Date();
+  cutoff.setDate(cutoff.getDate() - env.DONATION_GAP_DAYS);
+
+  const result = await db.collection("user").updateMany(
+    { isAvailable: false, lastDonationDate: { $lte: cutoff } },
+    { $set: { isAvailable: true } }
+  );
+
+  return { modifiedCount: result.modifiedCount };
+}
+
 export function startAvailabilityCron() {
   cron.schedule(env.AVAILABILITY_CRON_SCHEDULE, async () => {
     try {
-      const db = getNativeDb();
-      const cutoff = new Date();
-      cutoff.setDate(cutoff.getDate() - env.DONATION_GAP_DAYS);
-
-      const result = await db.collection("user").updateMany(
-        {
-          isAvailable: false,
-          lastDonationDate: { $lte: cutoff },
-        },
-        { $set: { isAvailable: true } }
-      );
-
-      console.log(
-        `[cron] availability reset: ${result.modifiedCount} donor(s) marked available again`
-      );
+      const { modifiedCount } = await runAvailabilityReset();
+      console.log(`[cron] availability reset: ${modifiedCount} donor(s) marked available again`);
     } catch (err) {
       console.error("[cron] availability reset failed", err);
     }

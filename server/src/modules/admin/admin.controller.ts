@@ -1,6 +1,6 @@
 import type { Request, Response } from "express";
-import { getNativeDb } from "../../config/db";
-import { ok } from "../../utils/apiResponse";
+import { getNativeDb } from "../../config/db.js";
+import { ok } from "../../utils/apiResponse.js";
 
 interface UserDoc {
   _id: string;

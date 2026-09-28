@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { requireAuth } from "../../middlewares/auth.middleware";
-import { requireRole } from "../../middlewares/rbac.middleware";
-import { listUnverifiedDonors, verifyDonor, removeDonor } from "./admin.controller";
+import { requireAuth } from "../../middlewares/auth.middleware.js";
+import { requireRole } from "../../middlewares/rbac.middleware.js";
+import { listUnverifiedDonors, verifyDonor, removeDonor } from "./admin.controller.js";
 
 export const adminRouter = Router();
 

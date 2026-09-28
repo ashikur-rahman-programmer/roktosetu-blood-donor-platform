@@ -1,6 +1,6 @@
-import { MongoClient, Db } from "mongodb";
+import { MongoClient, type Db } from "mongodb";
 import mongoose from "mongoose";
-import { env } from "./env";
+import { env } from "./env.js";
 
 let mongoClient: MongoClient | null = null;
 let nativeDb: Db | null = null;

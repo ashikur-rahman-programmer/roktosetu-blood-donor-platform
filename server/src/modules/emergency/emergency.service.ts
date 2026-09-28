@@ -1,6 +1,6 @@
-import { EmergencyRequest } from "./emergency.model";
-import { getNativeDb } from "../../config/db";
-import { sendSms } from "../../lib/notify";
+import { EmergencyRequest } from "./emergency.model.js";
+import { getNativeDb } from "../../config/db.js";
+import { sendSms } from "../../lib/notify.js";
 
 interface UserDoc {
   _id: string;

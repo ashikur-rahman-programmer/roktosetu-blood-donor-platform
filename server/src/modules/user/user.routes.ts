@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { requireAuth } from "../../middlewares/auth.middleware";
-import { writeLimiter } from "../../middlewares/rateLimit.middleware";
+import { requireAuth } from "../../middlewares/auth.middleware.js";
+import { writeLimiter } from "../../middlewares/rateLimit.middleware.js";
 import {
   getMe,
   patchMe,
@@ -8,7 +8,7 @@ import {
   patchAvailability,
   getMyHistory,
   getDonorSearch,
-} from "./user.controller";
+} from "./user.controller.js";
 
 export const userRouter = Router();
 

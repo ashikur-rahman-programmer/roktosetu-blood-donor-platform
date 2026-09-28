@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { BLOOD_GROUPS } from "../user/user.validation";
+import { BLOOD_GROUPS } from "../user/user.validation.js";
 
 export const createEmergencyRequestSchema = z.object({
   patientName: z.string().min(2, "রোগীর নাম দিন"),

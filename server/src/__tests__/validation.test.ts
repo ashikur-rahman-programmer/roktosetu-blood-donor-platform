@@ -1,9 +1,9 @@
 import { describe, it, expect } from "vitest";
-import { signUpSchema, updateProfileSchema, donorSearchQuerySchema } from "../modules/user/user.validation";
+import { signUpSchema, updateProfileSchema, donorSearchQuerySchema } from "../modules/user/user.validation.js";
 import {
   createEmergencyRequestSchema,
   listEmergencyQuerySchema,
-} from "../modules/emergency/emergency.validation";
+} from "../modules/emergency/emergency.validation.js";
 
 describe("user.validation", () => {
   const validSignUp = {

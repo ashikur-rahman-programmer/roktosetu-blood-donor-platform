@@ -1,4 +1,4 @@
-import { env } from "../config/env";
+import { env } from "../config/env.js";
 
 export function daysSince(date: Date | string | null | undefined): number | null {
   if (!date) return null;

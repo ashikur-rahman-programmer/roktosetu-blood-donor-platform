@@ -1,11 +1,11 @@
 import { Router } from "express";
-import { requireAuth } from "../../middlewares/auth.middleware";
-import { writeLimiter } from "../../middlewares/rateLimit.middleware";
+import { requireAuth } from "../../middlewares/auth.middleware.js";
+import { writeLimiter } from "../../middlewares/rateLimit.middleware.js";
 import {
   getEmergencyRequests,
   postEmergencyRequest,
   patchFulfilled,
-} from "./emergency.controller";
+} from "./emergency.controller.js";
 
 export const emergencyRouter = Router();
 

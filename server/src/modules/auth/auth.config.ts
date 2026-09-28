@@ -1,16 +1,20 @@
 import { betterAuth } from "better-auth";
 import { mongodbAdapter } from "better-auth/adapters/mongodb";
 import type { Db } from "mongodb";
-import { env } from "../../config/env";
-import { sendEmail } from "../../lib/notify";
+import { env } from "../../config/env.js";
+import { sendEmail } from "../../lib/notify.js";
 
 /**
  * Creates the Better Auth instance once the native MongoDB `Db` is ready.
- * Called from server.ts after connectAll().
+ * Called from app.ts after connectAll().
  *
  * Donor-specific fields live directly on Better Auth's `user` table via
  * `additionalFields` — this avoids maintaining a second "profile" collection
  * that has to be kept in sync with the auth user record.
+ *
+ * `better-auth` is an ESM-only package, so this whole server is built as
+ * ESM ("type": "module" + NodeNext) — that's what lets a plain static
+ * `import` work on Node, Render, and Vercel alike.
  */
 export function createAuth(db: Db) {
   return betterAuth({
@@ -103,4 +107,4 @@ export function createAuth(db: Db) {
   });
 }
 
-export type Auth = ReturnType<typeof createAuth>;
+export type Auth = Awaited<ReturnType<typeof createAuth>>;

@@ -6,9 +6,9 @@ import {
   updateProfile,
   getDonationHistory,
   toPublicUser,
-} from "./user.service";
-import { donorSearchQuerySchema, updateProfileSchema } from "./user.validation";
-import { ok } from "../../utils/apiResponse";
+} from "./user.service.js";
+import { donorSearchQuerySchema, updateProfileSchema } from "./user.validation.js";
+import { ok } from "../../utils/apiResponse.js";
 
 export async function getMe(req: Request, res: Response) {
   ok(res, toPublicUser(req.user!));

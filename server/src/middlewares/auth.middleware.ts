@@ -1,6 +1,6 @@
 import type { Request, Response, NextFunction } from "express";
 import { fromNodeHeaders } from "better-auth/node";
-import type { Auth } from "../modules/auth/auth.config";
+import type { Auth } from "../modules/auth/auth.config.js";
 
 // Minimal shape we rely on elsewhere in the app.
 export interface SessionUser {

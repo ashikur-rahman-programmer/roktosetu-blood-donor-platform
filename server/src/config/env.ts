@@ -37,4 +37,10 @@ export const env = {
 
   // Cron schedule for the availability-reset job (default: once a day at 00:05)
   AVAILABILITY_CRON_SCHEDULE: process.env.AVAILABILITY_CRON_SCHEDULE ?? "5 0 * * *",
+
+  // Only used if you deploy to Vercel (api/cron/availability.ts) — a
+  // shared secret so random people can't trigger your cron endpoint.
+  // Vercel's own Cron Jobs send this automatically as a Bearer token when
+  // CRON_SECRET is set in your Vercel project's env vars.
+  CRON_SECRET: process.env.CRON_SECRET ?? "",
 };

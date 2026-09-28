@@ -3,10 +3,10 @@ import {
   listEmergencyRequests,
   createEmergencyRequest,
   markFulfilled,
-} from "./emergency.service";
-import { createEmergencyRequestSchema, listEmergencyQuerySchema } from "./emergency.validation";
-import { ok } from "../../utils/apiResponse";
-import { AppError } from "../../middlewares/error.middleware";
+} from "./emergency.service.js";
+import { createEmergencyRequestSchema, listEmergencyQuerySchema } from "./emergency.validation.js";
+import { ok } from "../../utils/apiResponse.js";
+import { AppError } from "../../middlewares/error.middleware.js";
 
 export async function getEmergencyRequests(req: Request, res: Response, next: NextFunction) {
   try {

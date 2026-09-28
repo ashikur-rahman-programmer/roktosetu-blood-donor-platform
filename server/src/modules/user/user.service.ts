@@ -1,10 +1,10 @@
 import type { Db } from "mongodb";
-import { getNativeDb } from "../../config/db";
-import { DonationHistory } from "../donation/donation.model";
-import { PhoneViewLog } from "./phoneViewLog.model";
-import { env } from "../../config/env";
-import { isEligible } from "../../utils/dateHelper";
-import type { SessionUser } from "../../middlewares/auth.middleware";
+import { getNativeDb } from "../../config/db.js";
+import { DonationHistory } from "../donation/donation.model.js";
+import { PhoneViewLog } from "./phoneViewLog.model.js";
+import { env } from "../../config/env.js";
+import { isEligible } from "../../utils/dateHelper.js";
+import type { SessionUser } from "../../middlewares/auth.middleware.js";
 
 interface UserDoc {
   _id: string;
